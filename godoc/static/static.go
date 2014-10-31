@@ -302,15 +302,27 @@ var Files = map[string]string{
 
 	"callgraph.html": `<div class="toggle" style="display: none">
 	<div class="collapsed">
+<!--
 		<p class="exampleHeading toggleButton">▹ <span class="text">Internal call graph</span></p>
+-->
+		<p class="exampleHeading toggleButton">▹ <span class="text">内部调用图</span></p>
 	</div>
 	<div class="expanded">
+<!--
 		<p class="exampleHeading toggleButton">▾ <span class="text">Internal call graph</span></p>
+-->
+		<p class="exampleHeading toggleButton">▾ <span class="text">内部调用图</span></p>
+<!--
 		<p>
 		  This viewer shows the portion of the internal call
 		  graph of this package that is reachable from this function.
 		  See the <a href='#pkg-callgraph'>package's call
 		  graph</a> for more information.
+		</p>
+-->
+		<p>
+		本查看器展示了此包内可被该函数访问的一部分内部调用图。
+		请参阅<a href='#pkg-callgraph'>包调用图</a>获取更多信息。
 		</p>
 		<ul style="margin-left: 0.5in" id="callgraph-{{.Index}}" class="treeview"></ul>
 	</div>
@@ -332,7 +344,10 @@ var Files = map[string]string{
     <div id="code-area">
       <div id="code-header" align="center">
         <a id="code-popout-link" href="" target="_blank">
+<!--
           <img title="View code in new window" alt="Pop Out Code" src="/doc/codewalk/popout.png" style="display: block; float: right;"/>
+-->
+          <img title="在新窗口中查看代码" alt="弹出代码" src="/doc/codewalk/popout.png" style="display: block; float: right;"/>
         </a>
         <select id="code-selector">
           {{range .File}}
@@ -345,9 +360,14 @@ var Files = map[string]string{
       </div>
     </div>
     <div id="code-options" class="setting">
+<!--
       <span>code on <a id="set-code-left" class="selected" href="#">left</a> &bull; <a id="set-code-right" href="#">right</a></span>
       <span>code width <span id="code-column-width">70%</span></span>
       <span>filepaths <a id="show-filepaths" class="selected" href="#">shown</a> &bull; <a id="hide-filepaths" href="#">hidden</a></span>
+-->
+      <span>代码位置 <a id="set-code-left" class="selected" href="#">左侧</a> &bull; <a id="set-code-right" href="#">右侧</a></span>
+      <span>代码宽度 <span id="code-column-width">70%</span></span>
+      <span>文件路径 <a id="show-filepaths" class="selected" href="#">显示</a> &bull; <a id="hide-filepaths" href="#">隐藏</a></span>
     </div>
   </div>
   <div class="right" id="comment-column">
@@ -367,9 +387,14 @@ var Files = map[string]string{
       {{end}}
     </div>
     <div id="comment-options" class="setting">
+<!--
       <a id="prev-comment" href="#"><span class="hotkey">p</span>revious step</a>
       &bull;
       <a id="next-comment" href="#"><span class="hotkey">n</span>ext step</a>
+-->
+      <a id="prev-comment" href="#">上一步<span class="hotkey">p</span></a>
+      &bull;
+      <a id="next-comment" href="#">下一步<span class="hotkey">n</span></a>
     </div>
   </div>
 </div>
@@ -401,12 +426,21 @@ var Files = map[string]string{
 
 <p>
 <table class="layout">
+<!--
 <tr>
 	<th align="left">File</th>
 	<td width="25">&nbsp;</td>
 	<th align="right">Bytes</th>
 	<td width="25">&nbsp;</td>
 	<th align="left">Modified</th>
+</tr>
+-->
+<tr>
+	<th align="left">文件</th>
+	<td width="25">&nbsp;</td>
+	<th align="right">字节数</th>
+	<td width="25">&nbsp;</td>
+	<th align="left">修改日期</th>
 </tr>
 <tr>
 	<td><a href="..">..</a></td>
@@ -439,10 +473,16 @@ var Files = map[string]string{
 
 	"example.html": `<div id="example_{{.Name}}" class="toggle">
 	<div class="collapsed">
+<!--
 		<p class="exampleHeading toggleButton">▹ <span class="text">Example{{example_suffix .Name}}</span></p>
+-->
+		<p class="exampleHeading toggleButton">▹ <span class="text">示例{{example_suffix .Name}}</span></p>
 	</div>
 	<div class="expanded">
+<!--
 		<p class="exampleHeading toggleButton">▾ <span class="text">Example{{example_suffix .Name}}</span></p>
+-->
+		<p class="exampleHeading toggleButton">▾ <span class="text">示例{{example_suffix .Name}}</span></p>
 		{{with .Doc}}<p>{{html .}}</p>{{end}}
 		{{$output := .Output}}
 		{{with .Play}}
@@ -450,16 +490,27 @@ var Files = map[string]string{
 				<div class="input"><textarea class="code">{{html .}}</textarea></div>
 				<div class="output"><pre>{{html $output}}</pre></div>
 				<div class="buttons">
+<!--
 					<a class="run" title="Run this code [shift-enter]">Run</a>
 					<a class="fmt" title="Format this code">Format</a>
 					<a class="share" title="Share this code">Share</a>
+-->
+					<a class="run" title="运行此代码[Shift+Enter]">运行</a>
+					<a class="fmt" title="格式化此代码">格式化</a>
+					<a class="share" title="分享此代码">分享</a>
 				</div>
 			</div>
 		{{else}}
+<!--
 			<p>Code:</p>
+-->
+			<p>代码：</p>
 			<pre class="code">{{.Code}}</pre>
 			{{with .Output}}
+<!--
 			<p>Output:</p>
+-->
+			<p>输出：</p>
 			<pre class="output">{{html .}}</pre>
 			{{end}}
 		{{end}}
@@ -472,9 +523,15 @@ var Files = map[string]string{
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 {{with .Tabtitle}}
+<!--
   <title>{{html .}} - The Go Programming Language</title>
+-->
+  <title>{{html .}} - Go 编程语言</title>
 {{else}}
+<!--
   <title>The Go Programming Language</title>
+-->
+  <title>Go 编程语言</title>
 {{end}}
 <link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
 {{if .SearchBox}}
@@ -493,17 +550,33 @@ var Files = map[string]string{
 
 <form method="GET" action="/search">
 <div id="menu">
+<!--
 <a href="/doc/">Documents</a>
 <a href="/pkg/">Packages</a>
 <a href="/project/">The Project</a>
 <a href="/help/">Help</a>
 <a href="/blog/">Blog</a>
+-->
+<a href="/doc/">文档</a>
+<a href="/pkg/">包</a>
+<a href="/project/">项目</a>
+<a href="/help/">帮助</a>
+<a href="/blog/">博客</a>
 {{if .Playground}}
+<!--
 <a id="playgroundButton" href="http://play.golang.org/" title="Show Go Playground">Play</a>
+-->
+<a id="playgroundButton" href="http://play.golang.org/" title="显示 Go 操场">运行</a>
 {{end}}
+<!--
 <input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+-->
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="搜索">
 </div>
+<!--
 <div id="heading"><a href="/">The Go Programming Language</a></div>
+-->
+<div id="heading"><a href="/">Go 编程语言</a></div>
 </form>
 
 </div></div>
@@ -519,9 +592,14 @@ func main() {
 }</textarea></div>
 	<div class="output"></div>
 	<div class="buttons">
+<!--
 		<a class="run" title="Run this code [shift-enter]">Run</a>
 		<a class="fmt" title="Format this code">Format</a>
 		<a class="share" title="Share this code">Share</a>
+-->
+		<a class="run" title="运行此代码[Shift-Enter]">运行</a>
+		<a class="fmt" title="格式化此代码">格式化</a>
+		<a class="share" title="分享此代码">分享</a>
 	</div>
 </div>
 {{end}}
@@ -543,14 +621,23 @@ func main() {
 {{/* Body is HTML-escaped elsewhere */}}
 {{printf "%s" .Body}}
 
+<!--
 <div id="footer">
 Build version {{html .Version}}.<br>
 Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
 the content of this page is licensed under the
 Creative Commons Attribution 3.0 License,
 and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
-<a href="/doc/tos.html">Terms of Service</a> | 
+<a href="/doc/tos.html">Terms of Service</a> |
 <a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+-->
+<div id="footer">
+构建版本 {{html .Version}}.<br>
+除<a href="http://code.google.com/policies.html#restrictions">特别注明</a>外，
+本页内容均采用知识共享-署名（CC-BY）3.0协议授权，代码采用<a href="/LICENSE">BSD协议</a>授权。<br>
+<a href="/doc/tos.html">服务条款</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">隐私政策</a>
 </div>
 
 </div><!-- .container -->
@@ -763,7 +850,7 @@ function setupInlinePlayground() {
 			code.on('keyup', resize);
 			code.keyup(); // resize now.
 		};
-		
+
 		// If example already visible, set up playground now.
 		if ($(el).is(':visible')) {
 			setup();
@@ -1076,6 +1163,33 @@ function cgAddChild(tree, ul, cgn) {
 }
 
 })();
+
+// English switch.
+(function() {
+/*bindEvent(window, 'load', function ()*/ {
+    var texts
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    var langs = "", pair
+    // parse lang=en,zh querystring
+    for (var i = 0; i < vars.length; i++) {
+      pair = vars[i].split("=");
+      if (pair[0] == "lang") {
+        langs = unescape(pair[1])
+        break
+      }
+    }
+    // if en not enabled, don't show english translation
+    if (langs != "en") {
+      texts = document.getElementsByTagName('div')
+      for (var i in texts) {
+        if (texts[i].className == "english") {
+          texts[i].className = "invisible_translation";
+        }
+      }
+    }
+  }/*);*/
+})();
 `,
 
 	"images/minus.gif": "GIF89a\t\x00\t\x00\xf7\x00\x00\x00\x00\x00\x80\x80\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00!\xf9\x04\x01\x00\x00\xff\x00,\x00\x00\x00\x00\t\x00\t\x00\x00\b\"\x00\x03\b\x1cH\xf0\x9f\xc1\x83\xff\x04\"<\xa8pa\xc2\x00\xff\x00H\x94\xf8\xd0aE\x87\r\x17\x12\xdc\x18  \x00;",
@@ -1096,10 +1210,16 @@ function cgAddChild(tree, ul, cgn) {
 
 	"implements.html": `<div class="toggle" style="display: none">
 	<div class="collapsed">
+<!--
 		<p class="exampleHeading toggleButton">▹ <span class="text">Implements</span></p>
+-->
+		<p class="exampleHeading toggleButton">▹ <span class="text">实现</span></p>
 	</div>
 	<div class="expanded">
+<!--
 		<p class="exampleHeading toggleButton">▾ <span class="text">Implements</span></p>
+-->
+		<p class="exampleHeading toggleButton">▾ <span class="text">实现</span></p>
 		<div style="margin-left: 1in" id='implements-{{.Index}}'>...</div>
 	</div>
 </div>
@@ -1487,10 +1607,16 @@ function cgAddChild(tree, ul, cgn) {
 
 	"methodset.html": `<div class="toggle" style="display: none">
 	<div class="collapsed">
+<!--
 		<p class="exampleHeading toggleButton">▹ <span class="text">Method set</span></p>
+-->
+		<p class="exampleHeading toggleButton">▹ <span class="text">方法集</span></p>
 	</div>
 	<div class="expanded">
+<!--
 		<p class="exampleHeading toggleButton">▾ <span class="text">Method set</span></p>
+-->
+		<p class="exampleHeading toggleButton">▾ <span class="text">方法集</span></p>
 		<div style="margin-left: 1in" id='methodset-{{.Index}}'>...</div>
 	</div>
 </div>
@@ -1499,7 +1625,10 @@ function cgAddChild(tree, ul, cgn) {
 	"opensearch.xml": `<?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>godoc</ShortName>
+<!--
   <Description>The Go Programming Language</Description>
+-->
+  <Description>Go 编程语言</Description>
   <Tags>go golang</Tags>
   <Contact />
   <Url type="text/html" template="{{.BaseURL}}/search?q={searchTerms}" />
@@ -1536,23 +1665,39 @@ function cgAddChild(tree, ul, cgn) {
 			<dd><code>import "{{html .ImportPath}}"</code></dd>
 			</dl>
 			<dl>
+<!--
 			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
 			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+-->
+			<dd><a href="#pkg-overview" class="overviewLink">概览</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">索引</a></dd>
 			{{if $.Examples}}
+<!--
 				<dd><a href="#pkg-examples" class="examplesLink">Examples</a></dd>
+-->
+				<dd><a href="#pkg-examples" class="examplesLink">示例</a></dd>
 			{{end}}
 			{{if $.Dirs}}
+<!--
 				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+-->
+				<dd><a href="#pkg-subdirectories">子目录</a></dd>
 			{{end}}
 			</dl>
 		</div>
 		<!-- The package's Name is printed as title by the top-level template -->
 		<div id="pkg-overview" class="toggleVisible">
 			<div class="collapsed">
+<!--
 				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+-->
+				<h2 class="toggleButton" title="点此显示概览">概览 ▹</h2>
 			</div>
 			<div class="expanded">
+<!--
 				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+-->
+				<h2 class="toggleButton" title="点此隐藏概览">概览 ▾</h2>
 				{{comment_html .Doc}}
 			</div>
 		</div>
@@ -1560,19 +1705,31 @@ function cgAddChild(tree, ul, cgn) {
 
 		<div id="pkg-index" class="toggleVisible">
 		<div class="collapsed">
+<!--
 			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+-->
+			<h2 class="toggleButton" title="点此显示素引">索引 ▹</h2>
 		</div>
 		<div class="expanded">
+<!--
 			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+-->
+			<h2 class="toggleButton" title="点此隐藏索引">索引 ▾</h2>
 
 		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
 			<div id="manual-nav">
 			<dl>
 			{{if .Consts}}
+<!--
 				<dd><a href="#pkg-constants">Constants</a></dd>
+-->
+				<dd><a href="#pkg-constants">常量</a></dd>
 			{{end}}
 			{{if .Vars}}
+<!--
 				<dd><a href="#pkg-variables">Variables</a></dd>
+-->
+				<dd><a href="#pkg-variables">变量</a></dd>
 			{{end}}
 			{{range .Funcs}}
 				{{$name_html := html .Name}}
@@ -1600,7 +1757,10 @@ function cgAddChild(tree, ul, cgn) {
 
 		{{if $.Examples}}
 		<div id="pkg-examples">
+<!--
 			<h4>Examples</h4>
+-->
+			<h4>示例</h4>
 			<dl>
 			{{range $.Examples}}
 			<dd><a class="exampleLink" href="#example_{{.Name}}">{{example_name .Name}}</a></dd>
@@ -1610,7 +1770,10 @@ function cgAddChild(tree, ul, cgn) {
 		{{end}}
 
 		{{with .Filenames}}
+<!--
 			<h4>Package files</h4>
+-->
+			<h4>包文件</h4>
 			<p>
 			<span style="font-size:90%">
 			{{range .}}
@@ -1624,10 +1787,17 @@ function cgAddChild(tree, ul, cgn) {
 
 		<div id="pkg-callgraph" class="toggle" style="display: none">
 		<div class="collapsed">
+<!--
 			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+-->
+			<h2 class="toggleButton" title="点此显示内部调用图">内部调用图 ▹</h2>
 		</div> <!-- .expanded -->
 		<div class="expanded">
+<!--
 			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+-->
+			<h2 class="toggleButton" title="点此隐藏内部调用图">内部调用图 ▾</h2>
+<!--
 			<p>
 			  In the call graph viewer below, each node
 			  is a function belonging to this package
@@ -1654,20 +1824,41 @@ function cgAddChild(tree, ul, cgn) {
 			  particular programs or tests that were
 			  analyzed.
 			</p>
+-->
+			<p>
+			在下面的调用图查看器中，每个节点都是一个属于本包的函数，其子节点即为它所调用的函数——或许是动态的。
+			</p>
+			<p>
+			根节点为包的入口点：函数可从包的外部调用。若这些函数被其它包动态地调用，
+			那么它们可能是未导出的或匿名的。
+			</p>
+			<p>
+			点击一个节点来查看该函数的源码。在源码中，可以点击它的 <code>func</code>
+			声明标记来查看其调用者。
+			</p>
+			<p>
+			在分析特定程序或测试时，被认定为无法访问的函数会被忽略。
+			</p>
 			<!-- Zero means show all package entry points. -->
 			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
 		</div>
 		</div> <!-- #pkg-callgraph -->
 
 		{{with .Consts}}
+<!--
 			<h2 id="pkg-constants">Constants</h2>
+-->
+			<h2 id="pkg-constants">常量</h2>
 			{{range .}}
 				<pre>{{node_html $ .Decl true}}</pre>
 				{{comment_html .Doc}}
 			{{end}}
 		{{end}}
 		{{with .Vars}}
+<!--
 			<h2 id="pkg-variables">Variables</h2>
+-->
+			<h2 id="pkg-variables">变量</h2>
 			{{range .}}
 				<pre>{{node_html $ .Decl true}}</pre>
 				{{comment_html .Doc}}
@@ -1746,25 +1937,43 @@ function cgAddChild(tree, ul, cgn) {
 {{with .Dirs}}
 	{{/* DirList entries are numbers and strings - no need for FSet */}}
 	{{if $.PDoc}}
+<!--
 		<h2 id="pkg-subdirectories">Subdirectories</h2>
+-->
 	{{end}}
+		<h2 id="pkg-subdirectories">子目录</h2>
 	{{if eq $.Dirname "/src"}}
 		<div id="manual-nav">
 			<dl>
+<!--
 				<dt><a href="#stdlib">Standard library</a></dt>
 				<dt><a href="#other">Other packages</a></dt>
 				<dd><a href="#subrepo">Sub-repositories</a></dd>
 				<dd><a href="#community">Community</a></dd>
+-->
+				<dt><a href="#stdlib">标准库</a></dt>
+				<dt><a href="#other">其它包</a></dt>
+				<dd><a href="#subrepo">子代码库</a></dd>
+				<dd><a href="#community">社区</a></dd>
 			</dl>
 		</div>
+<!--
 		<h2 id="stdlib">Standard library</h2>
+-->
+		<h2 id="stdlib">标准库</h2>
 		<img class="gopher" src="/doc/gopher/pkg.png"/>
 	{{end}}
 	<table class="dir">
 	<tr>
+<!--
 	<th>Name</th>
+-->
+	<th>名称</th>
 	<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<!--
 	<th style="text-align: left; width: auto">Synopsis</th>
+-->
+	<th style="text-align: left; width: auto">摘要</th>
 	</tr>
 	{{if not (or (eq $.Dirname "/src") (eq $.Dirname "/src/cmd") $.DirFlat)}}
 		<tr>
@@ -1791,6 +2000,7 @@ function cgAddChild(tree, ul, cgn) {
 	</table>
 
 	{{if eq $.Dirname "/src"}}
+<!--
 	<h2 id="other">Other packages</h2>
 
 	<h3 id="subrepo">Sub-repositories</h3>
@@ -1817,6 +2027,34 @@ function cgAddChild(tree, ul, cgn) {
 		<li><a href="//godoc.org">GoDoc</a> - a package index and search engine.</li>
 		<li><a href="http://go-search.org">Go Search</a> - a code search engine.</li>
 		<li><a href="/wiki/Projects">Projects at the Go Wiki</a> - a curated list of Go projects.</li>
+	</ul>
+-->
+	<h2 id="other">其它包</h2>
+
+	<h3 id="subrepo">字代码库</h3>
+	<p>
+	这些包是 Go 项目的一部分，但并未在主源码树中。它们在比 Go
+	核心库更加宽松的<a href="/doc/go1compat">兼容性需求</a>下开发。
+	可通过“<a href="/cmd/go/#hdr-Download_and_install_packages_and_dependencies">go get</a>”安装它们.
+	</p>
+	<ul>
+		<li><a href="//godoc.org/code.google.com/p/go.crypto">crypto</a> — 附加的加密包。</li>
+		<li><a href="//godoc.org/code.google.com/p/go.image">image</a> — 附加的图像包。</li>
+		<li><a href="//godoc.org/code.google.com/p/go.net">net</a> — 附加的网络包。</li>
+		<li><a href="//godoc.org/code.google.com/p/go.sys">sys</a> — 系统调用包。</li>
+		<li><a href="//godoc.org/code.google.com/p/go.text">text</a> — 文本处理包。</li>
+		<li><a href="//godoc.org/code.google.com/p/go.tools">tools</a> — godoc、vet、cover 及其它工具。</li>
+		<li><a href="//godoc.org/code.google.com/p/go.exp">exp</a> — 实验性代码（可能不经警告就更改，请小心对待）。</li>
+	</ul>
+
+	<h3 id="community">社区</h3>
+	<p>
+	这些服务可帮你寻找社区提供的开源包。
+	</p>
+	<ul>
+		<li><a href="//godoc.org">GoDoc</a> - 包索引与搜索引擎。</li>
+		<li><a href="http://go-search.org">Go 搜索</a> - 代码搜索引擎。</li>
+		<li><a href="/wiki/Projects">Go 维基上的项目</a> - Go 项目策划列表</li>
 	</ul>
 	{{end}}
 {{end}}
@@ -2490,7 +2728,10 @@ function PlaygroundOutput(el) {
 {{end}}
 {{with .Alt}}
 	<p>
+<!--
 	<span class="alert" style="font-size:120%">Did you mean: </span>
+-->
+	<span class="alert" style="font-size:120%">你是否在找：</span>
 	{{range .Alts}}
 		<a href="search?q={{urlquery .}}" style="font-size:120%">{{html .}}</a>
 	{{end}}
@@ -2562,7 +2803,10 @@ function PlaygroundOutput(el) {
 {{$query_url := urlquery .Query}}
 {{if not .Idents}}
 	{{with .Pak}}
+<!--
 		<h2 id="Packages">Package {{html $.Query}}</h2>
+-->
+		<h2 id="Packages">{{html $.Query}} 包</h2>
 		<p>
 		<table class="layout">
 		{{range .}}
@@ -2575,7 +2819,10 @@ function PlaygroundOutput(el) {
 {{end}}
 {{with .Hit}}
 	{{with .Decls}}
+<!--
 		<h2 id="Global">Package-level declarations</h2>
+-->
+		<h2 id="Global">包级声明</h2>
 		{{range .}}
 			{{$pkg_html := pkgLink .Pak.Path | html}}
 			<h3 id="Global_{{$pkg_html}}">package <a href="/{{$pkg_html}}">{{html .Pak.Name}}</a></h3>
@@ -2592,7 +2839,10 @@ function PlaygroundOutput(el) {
 		{{end}}
 	{{end}}
 	{{with .Others}}
+<!--
 		<h2 id="Local">Local declarations and uses</h2>
+-->
+		<h2 id="Local">局部声明和使用</h2>
 		{{range .}}
 			{{$pkg_html := pkgLink .Pak.Path | html}}
 			<h3 id="Local_{{$pkg_html}}">package <a href="/{{$pkg_html}}">{{html .Pak.Name}}</a></h3>
@@ -2639,7 +2889,10 @@ function PlaygroundOutput(el) {
 			{{if .Doc}}
 				<p>{{comment_html .Doc}}</p>
 			{{else}}
+<!--
 				<p><em>No documentation available</em></p>
+-->
+				<p><em>无可用文档</em></p>
 			{{end}}
 		{{end}}
 	{{end}}
@@ -2654,11 +2907,20 @@ function PlaygroundOutput(el) {
 {{$query_url := urlquery .Query}}
 {{with .Textual}}
 	{{if $.Complete}}
+<!--
 		<h2 id="Textual">{{html $.Found}} textual occurrences</h2>
+-->
+		<h2 id="Textual">该文本出现 {{html $.Found}} 次</h2>
 	{{else}}
+<!--
 		<h2 id="Textual">More than {{html $.Found}} textual occurrences</h2>
+-->
+		<h2 id="Textual">该文本出现超过 {{html $.Found}} 次</h2>
 		<p>
+<!--
 		<span class="alert" style="font-size:120%">Not all files or lines containing "{{html $.Query}}" are shown.</span>
+-->
+		<span class="alert" style="font-size:120%">包含“{{html $.Query}}”的文件或行并未全部显示。</span>
 		</p>
 	{{end}}
 	<p>
@@ -3227,63 +3489,80 @@ div#playground .output {
 
 /* Inline runnable snippets (play.js/initPlayground) */
 #content .code pre, #content .playground pre, #content .output pre {
-        margin: 0;
-        padding: 0;
-        background: none;
-        border: none;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
 	outline: 0px solid transparent;
-        overflow: auto;
+	overflow: auto;
 }
 #content .playground .number, #content .code .number {
-        color: #999;
+	color: #999;
 }
 #content .code, #content .playground, #content .output {
 	width: auto;
-        margin: 20px;
-        padding: 10px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
+	margin: 20px;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 #content .code, #content .playground {
-        background: #e9e9e9;
+	background: #e9e9e9;
 }
 #content .output {
-        background: #202020;
+	background: #202020;
 }
 #content .output .stdout, #content .output pre {
-        color: #e6e6e6;
+	color: #e6e6e6;
 }
 #content .output .stderr, #content .output .error {
-        color: rgb(244, 74, 63);
+	color: rgb(244, 74, 63);
 }
 #content .output .system, #content .output .exit {
-        color: rgb(255, 209, 77)
+	color: rgb(255, 209, 77)
 }
 #content .buttons {
-        position: relative;
-        float: right;
-        top: -50px;
-        right: 30px;
+	position: relative;
+	float: right;
+	top: -50px;
+	right: 30px;
 }
 #content .output .buttons {
-        top: -60px;
-        right: 0;
-        height: 0;
+	top: -60px;
+	right: 0;
+	height: 0;
 }
 #content .buttons .kill {
-        display: none;
-        visibility: hidden;
+	display: none;
+	visibility: hidden;
 }
 a.error {
 	font-weight: bold;
-        color: white;
+	color: white;
 	background-color: darkred;
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-        padding: 2px 4px 2px 4px; /* TRBL */
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	padding: 2px 4px 2px 4px; /* TRBL */
+}
+
+/* Hide English translations. */
+div.english {
+	display: none;
+}
+.invisible_translation {
+	display: none;
+}
+/* Translator notes. */
+p.tnote {
+	background: #00f9e9;
+	padding: 10px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 `,
 }

@@ -10,7 +10,10 @@
 {{end}}
 {{with .Alt}}
 	<p>
+<!--
 	<span class="alert" style="font-size:120%">Did you mean: </span>
+-->
+	<span class="alert" style="font-size:120%">你是否在找：</span>
 	{{range .Alts}}
 		<a href="search?q={{urlquery .}}" style="font-size:120%">{{html .}}</a>
 	{{end}}
